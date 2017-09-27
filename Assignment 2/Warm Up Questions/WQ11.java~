@@ -1,0 +1,23 @@
+
+
+public class WQ11 {
+  public static void main(String[] args) {
+  
+  //input String array
+  // Output Strings on separate lines
+  
+  String[] something = new String[5];
+  something[0] = sami;
+  something[1] = is;
+  something[2] = a; 
+  something[3] = champion;
+  something[4] boy;
+  
+  System.out.println(something[0]);
+  System.out.println(something[1]);
+  System.out.println(something[2]);
+  System.out.println(something[3]);
+  System.out.println(something[4]);
+  }
+}
+  

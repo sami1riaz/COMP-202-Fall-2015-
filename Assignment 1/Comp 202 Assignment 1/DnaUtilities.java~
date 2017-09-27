@@ -1,0 +1,117 @@
+import java.util.Scanner;
+
+public class DnaUtilities {
+
+  public static void main (String[] args) {
+  while (true) {
+    //question 3a
+    char c = getUserInput(); 
+    if (isValidBase (c)) {
+      System.out.println(c + " is a valid Base");
+       
+   // question 3b      
+    char complement = watsonCrickComplement(c);        
+    System.out.println("Watson Crick Complement: " + complement);
+    }
+    
+    else {
+     System.out.println("NOT a valid Base ");
+    }
+  
+
+//question 3c 
+   String userString = getStringInput();
+   System.out.println("User entered: " + userString);
+   
+   String complementAnswer = watsonCrickTripletComplement (userString);
+   System.out.println("Complete WatsonCrickComplement is " + complementAnswer);
+
+   //to just enter String, comment out the methods for part a and b
+  
+  }
+ }
+// question 3a
+  public static char getUserInput () {
+    System.out.println("Enter a char");
+    Scanner scanner = new Scanner(System.in);
+    char c = scanner.next().charAt(0);
+    System.out.println("Char input was : " + c);
+    return c;
+}
+  public static boolean isValidBase (char c) {
+    if ((c == 'A') || (c == 'C') || (c == 'G') || (c == 'T')) {
+   return true;
+    }
+    else return false;
+  }
+ 
+  //question 3b
+  public static char watsonCrickComplement (char c) {
+    if (c == 'A') {
+      return 'T';
+    } 
+    else if (c == 'T') {
+      return 'A';
+    }
+    else if (c == 'C') {
+      return 'G';
+    }
+    else if (c == 'G') {
+      return 'C';
+    }
+    else {
+      return c;
+    }
+  }
+  
+  
+  //question 3c
+  public static String getStringInput () {
+    System.out.println("Enter a String");
+    Scanner scanner = new Scanner (System.in);
+    String userString = scanner.nextLine();
+    return userString;
+  }
+    public static String watsonCrickTripletComplement (String dnaSequence) {
+  if (dnaSequence.length() == 3) {
+    char firstChar = dnaSequence.charAt(0);
+    char secondChar = dnaSequence.charAt(1);
+    char thirdChar = dnaSequence.charAt(2);
+    char firstComp, secondComp, thirdComp;
+   if (isValidBase(firstChar)) {
+    firstComp = watsonCrickComplement(firstChar);
+    
+    if (isValidBase(secondChar)) {
+     secondComp = watsonCrickComplement(secondChar);
+     
+     if (isValidBase (thirdChar)) {
+      thirdComp = watsonCrickComplement(thirdChar);
+      
+      //now create string from 3 chars
+      String completeComplement = "" + firstComp + secondComp + thirdComp;
+      return completeComplement;
+     }
+     else {
+      return "";
+     }
+    }
+    else {
+     return "";
+    }
+   }
+   else {
+    return "";
+   }
+  }
+  else {
+    return "";
+  }
+    }
+
+
+  
+  }
+
+  
+  
+

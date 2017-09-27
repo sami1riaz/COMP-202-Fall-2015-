@@ -1,0 +1,29 @@
+import java.util.Scanner;
+  
+public class Char {
+  public static void main(String[] args) {
+  Scanner keyboard= new Scanner(System.in);
+  char example = keyboard.findInLine(".").charAt(0);
+  System.out.println("Enter a Char ");
+ 
+  printTypeOfChar(example);
+  }
+  
+  public static char printTypeOfChar(char example){
+    if (example >= 'A' && example <= 'Z'); {
+    
+      System.out.println("UPPERCASE");
+    }
+    
+    
+    else if (example >= 'a' && example <= 'z');{ 
+    
+    System.out.println("lowercase");
+    }
+    
+    else { 
+      System.out.println("Symbol");
+    }
+  
+  }
+  

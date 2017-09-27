@@ -1,0 +1,28 @@
+public class CardGame {
+  public static void main(String[] args) { 
+    
+    System.out.println("Enter the number of players");
+
+    int numofPlayers = Integer.parseInt(args[0]);
+    CardPile gameDeck = new CardPile();
+      gameDeck.makeFullDeck(); 
+    CardPile [] players = new CardPile[numofPlayers];
+    int numofnum =i % numofPlayers;
+    for (int i = 0; i < numofPlayers; i++) {
+      players[i]=new CardPile();
+    }
+
+    for (int i= 0; i < 52; i++) {
+      int numofnum = i % numofPlayers;
+      CardPile currentPlayer = players[i % numofPlayers];
+      Card nextCard = gameDeck.get(i);
+      players[numofnum].addToBottom(nextCard); // add nextCard to currentPlayer's pile //; 
+
+    }
+    for (int i = 1; i < numofPlayers; i++) {
+      if (players[i].find(Suit.SPADES, Value.ACE) != -1) {
+        System.out.println("Player #" + i + "has won!");
+      }
+    }
+  }
+}

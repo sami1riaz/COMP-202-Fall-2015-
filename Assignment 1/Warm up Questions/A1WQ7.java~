@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class A1WQ7 {
+  public static void main(String[] args) {
+    
+    Scanner sc = new Scanner(System.in);
+    double a = sc.nextDouble();
+    double b = sc.nextDouble();
+    double c = sc.nextDouble();
+    double d = sc.nextDouble();
+    
+    double det = a*d - b*c;
+    System.out.println(det);
+  }
+}

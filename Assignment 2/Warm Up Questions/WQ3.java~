@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class WQ3 {
+  public static void main(String[] args) {
+    
+    Scanner reader = new Scanner(System.in);
+    System.out.println("Enter a String ");
+      String s = reader.nextLine();
+  
+     //run time error occurs when i try to use the toUpperClass method.
+      //dont know how to properly use the toUpperClass method
+      for(int i = 0; i < s.length(); i++) {
+      
+        char ch = s.charAt(i); //dont understand
+        if('a' <= ch && ch <= 'z') {
+          ch += 'A' - 'a'; //dont exactly understsand this
+          
+         
+        }
+      System.out.print(ch);
+      }
+      
+  }
+}
+          
+    
+    

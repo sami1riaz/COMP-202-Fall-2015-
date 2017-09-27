@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class WQ6 {
+  public static void main(String[] args) {
+   
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter a number "); 
+                                           
+    int n = sc.nextInt();
+    
+   boolean result = isPrime(n); //calling the isPrime method
+   System.out.println(result); // prints out whether its true or false
+   
+   firstPrimeNumbers(n); // calls the firstPrimeNumbers method
+  }
+    public static boolean isPrime(int n) {
+    if (n <= 2) {
+      return false;
+    
+    }
+   
+    int i = 2;
+    while(i < n) {
+      if(n % i == 0) {
+        return false;
+      }
+    
+    return true;
+  }
+    return true; // checked whether number is prime, 
+                 //but i needed isPrime method to check whch numbers are prime 
+    }
+     public static void firstPrimeNumbers(int n) {
+    
+    int primesFoundSoFar = 0; // program checks n number of primes after this number.
+    int nextNumberToCheck= 0; // to check first n number of primes use = 2
+
+                                 
+    while (primesFoundSoFar < n ) {
+      if (isPrime(nextNumberToCheck)){
+        System.out.println(nextNumberToCheck + "");
+        primesFoundSoFar++; 
+      }
+      nextNumberToCheck++;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+public class A1WQ6 {
+  public static void main(String[] args) {
+    int x = 3;
+    int y = 4;
+    swap(x, y);
+      
+  }
+  
+  public static void swap(int x, int y){
+  int x = temp;
+  x = y;
+  y = x;
+ }
+}

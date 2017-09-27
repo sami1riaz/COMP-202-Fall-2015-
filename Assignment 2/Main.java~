@@ -1,0 +1,82 @@
+public class Main {
+  
+  char[] ABC = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+  
+  public static void main(String[] args) { 
+    new Main("Sami is a champion boy", 3);
+  }
+  
+  
+  public Main(String originalMessage, int shift) {
+    
+    String output = caeserShift(originalMessage, shift);
+    
+    System.out.prntln(output);
+    System.out.println("");
+    
+    System.out.println(caesarShift(output, -offset));
+  }
+ 
+  
+  public String caesarShift(String originalMessage, int shift) {
+  char[] useMe = originalMessage.toCharArray();
+  
+  String output = "";
+  
+  for(int i = 0; i != useMe.length; i++) {
+    if( Character.isUpperCase(useMe[i])){
+    output += Character.toUpperCase(calcShift(getIndex(useMe[i], shift)));
+        }
+    else {
+      output += calcShift(getIndex(useMe[i]), Shift);
+    }
+    
+return output;
+}
+  }
+
+ public int getIndex(char letter) {
+  
+  if(Character.isUpperCase(letter)){
+  
+    if(ABC[i] == letter) {
+    
+      return i;
+    }
+  }
+  return 999;
+}
+
+
+public char calcShift(int index, int shift) {
+  if(index + shift < 0) {
+    int newIndex = 26 + (index + shift);
+    return ABC[newIndex];
+  }
+  
+  if(index + shift > 25) {
+    int newIndex = (index + shift) - 26;
+    return ABC[index + shift];
+  }
+  
+  if(index + shift < 25 && index + shift > 0) {
+    return ABC[index + shift];
+  }
+  
+  if(index + shift == 0) {
+    return ABC[index + shift];
+  }
+  return X;
+}
+  }
+
+
+
+
+                                    
+                                    
+  
+  
+  
+  
+      

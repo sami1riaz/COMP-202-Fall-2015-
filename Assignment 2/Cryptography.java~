@@ -1,0 +1,156 @@
+
+
+public class Cryptography {
+  private static char[] abc = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+  private static char[] ABC = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+  
+ public static void main (String[] args) {
+  System.out.println("Solution Q 1");
+  String a1 = caesarEncrypt("go Rangers!", 3);
+  System.out.println("A1: " +a1);
+  
+  System.out.println("\nSolution Q 2");
+  String a2 = caesarDecrypt("jr Udqjhuv!", 3);
+  System.out.println("A1: " +a2);
+  
+  System.out.println("\nSolutoin to Q3\n");
+  String mostWordsDecrypted = crackCipher ("dbu eph", abc.length+1);
+  System.out.println("Most words decyphered: " +mostWordsDecrypted);
+ }
+ 
+ public static String crackCipher (String encoded, int numberLetters) {
+  int[] wordsArray = new int[27];
+  int highestNumberOfWords = 0;
+  String mostWords = "";
+  
+  for (int i = 0; i < numberLetters - 1; i ++) {
+   String decryptedWord = caesarDecrypt(encoded, i);
+   int count = SentenceChecker.countEnglishWords(decryptedWord);
+   wordsArray[i] = count;
+   
+   if (i > 0) {
+    //if current number is greater than previous number
+    if (wordsArray[i] > highestNumberOfWords) {
+     highestNumberOfWords = wordsArray[i];
+     mostWords = decryptedWord;
+    }
+   }
+   //if the first first element is highest number
+   else {
+    highestNumberOfWords = wordsArray[i];
+    mostWords = decryptedWord;
+   }
+   System.out.println("Decrypted word " +decryptedWord+ " with CountEnglishWords = " + count); 
+  }
+  System.out.println("Highest number of word is " +highestNumberOfWords+ " : " +mostWords);
+  return mostWords;
+ }
+ 
+ public static void test(String originalMessage, int shift) {
+  caesarEncrypt(originalMessage, shift);
+  caesarDecrypt(originalMessage, shift);
+ }
+ 
+ public static String caesarEncrypt (String originalMessage, int shift) {
+  return caesarShift(originalMessage, shift);
+ }
+ 
+ public static String caesarDecrypt (String originalMessage, int shift) {
+  return caesarShift(originalMessage, -shift);
+ }
+ 
+ //convert to upperCase character
+ public static char toUpperCase (char c) {
+  for (int i = 0; i < abc.length - 1; i++) {
+   if (abc[i] == c) {
+    return ABC[i];
+   }
+  }
+  return c;
+ }
+ 
+ //check if upper case character
+ public static boolean isUpperCase(char c) {
+  if ((c >= 'A') && (c <= 'Z')) {
+   return true;
+  }
+  else {
+   return false;
+  }
+ }
+ 
+ public static boolean isLowerCase (char c) {
+  if ((c >= 'a') && (c <= 'z')) {
+   return true;
+  }
+  else {
+   return false;
+  }
+ }
+ 
+  public static String caesarShift(String originalMessage, int shift) {
+    char[] useMe = originalMessage.toCharArray();
+    
+    String output = "";
+    
+    for(int i = 0; i != useMe.length; i++) {
+     //if an uppercase character
+     if(isUpperCase(useMe[i])){
+      output += toUpperCase(calcShift(getIndex(useMe[i]), shift));
+          }
+     //if lower case character
+     else if (isLowerCase(useMe[i])) {
+      output += calcShift(getIndex(useMe[i]), shift);
+     }
+     //if any other character, dont shift
+     else {
+      output += useMe[i];
+     }
+    }
+    return output;
+  }
+  
+  public static int getIndex(char letter) {
+   //if uppercase char
+    if(isUpperCase(letter)){
+     for(int i = 0;i != ABC.length; i++) {
+      if(ABC[i] == letter) {
+       return i;
+      }
+     }
+    }
+    //or if char is lower case
+    else {
+     for(int i = 0;i != abc.length; i++) {
+      if(abc[i] == letter) {
+       return i;
+      }
+     }
+    }
+    return 999;
+  }
+
+  public static char calcShift(int index, int shift) {
+    if(index + shift < 0) {
+      int newIndex = 26 + (index + shift);
+      return abc[newIndex];
+    }
+    
+    if(index + shift > 25) {
+      int newIndex = (index + shift) - 26;
+      return abc[newIndex];
+    }
+    
+    if(index + shift < 25 && index + shift > 0) {
+      return abc[index + shift];
+    }
+    
+    if(index + shift == 0) {
+      return abc[index + shift];
+    }
+    return 'X';
+  }
+
+}
+
+
